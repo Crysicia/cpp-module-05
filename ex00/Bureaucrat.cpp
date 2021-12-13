@@ -1,11 +1,16 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : m_name("Nameless") {
+Bureaucrat::Bureaucrat() : m_name("Nameless"), m_grade(150) {
 	std::cout << "Bureaucrat default constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string const& name) : m_name(name) {
+Bureaucrat::Bureaucrat(std::string const& name, unsigned char const& grade) : m_name(name) {
 	std::cout << "Bureaucrat named constructor called" << std::endl;
+	if (grade < 1 or grade > 150) {
+		// throw error
+		return ;
+	}
+	m_grade = grade;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& copy) {
@@ -31,6 +36,18 @@ std::string const& Bureaucrat::getName(void) const {
 
 unsigned char const& Bureaucrat::getGrade(void) const {
 	return m_grade;
+}
+
+void Bureaucrat::incrementGrade(void) {
+	if (m_grade > 1) {
+		m_grade--;
+	}
+}
+
+void Bureaucrat::decrementGrade(void) {
+	if (m_grade < 150) {
+		m_grade++;
+	}
 }
 
 std::ostream& operator<< (std::ostream& os, const Bureaucrat& bureaucrat) {
