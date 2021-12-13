@@ -16,7 +16,9 @@ Bureaucrat::Bureaucrat(std::string const& name, unsigned char const& grade) : m_
 Bureaucrat::Bureaucrat(const Bureaucrat& copy) {
 	std::cout << "Bureaucrat copy constructor called" << std::endl;
 	*this = copy;
-	this->m_name = copy.m_name;
+	// TO ASK: Could I assign a const ?
+	// this->m_name = copy.m_name;
+	this->m_grade = copy.m_grade;
 }
 
 Bureaucrat::~Bureaucrat() {
@@ -26,7 +28,9 @@ Bureaucrat::~Bureaucrat() {
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs) {
 	std::cout << "Bureaucrat copy operator called" << std::endl;
 	if ( this == &rhs ) { return *this; }
-	this->m_name = rhs.m_name;
+	// TO ASK: Could I assign a const ?
+	// this->m_name = rhs.m_name;
+	this->m_grade = rhs.m_grade;
 	return *this;
 }
 
