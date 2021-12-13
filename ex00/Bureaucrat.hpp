@@ -13,7 +13,7 @@ public:
 	Bureaucrat& operator=(const Bureaucrat& rhs);
 
 	std::string const& getName(void) const;
-	unsigned char& getGrade(void) const;
+	unsigned char const& getGrade(void) const;
 	void incrementGrade(void);
 	void decrementGrade(void);
 
@@ -21,5 +21,7 @@ private:
 	const std::string m_name;
 	unsigned char m_grade;
 };
+
+std::ostream& operator<< (std::ostream& os, const Bureaucrat& Bureaucrat);
 
 #endif

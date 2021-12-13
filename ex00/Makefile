@@ -3,7 +3,8 @@ CXX		= c++
 NAME	= bureaucrat.out
 OBJS	= $(SRCS:.cpp=.o)
 RM		= rm -f
-SRCS	= main.cpp 
+SRCS	= main.cpp \
+		  Bureaucrat.cpp
 
 all: $(NAME)
 
