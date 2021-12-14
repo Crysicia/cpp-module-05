@@ -1,6 +1,6 @@
 CFLAGS	= -std=c++98 -pedantic -Wall -Werror -Wextra
 CXX		= c++
-NAME	= bureaucrat.out
+NAME	= form.out
 OBJS	= $(SRCS:.cpp=.o)
 RM		= rm -f
 SRCS	= main.cpp \

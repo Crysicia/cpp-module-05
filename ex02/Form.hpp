@@ -10,12 +10,14 @@ class Form {
 public:
 	Form();
 	Form(std::string const& name, int const& sign_grade, int const& execute_grade);
+	Form(std::string const& name, int const& sign_grade, int const& execute_grade, std::string const& target);
 	Form(const Form& copy);
 	~Form();
 	Form& operator=(const Form& rhs);
 
 	void beSigned(Bureaucrat& bureaucrat);
 	std::string const& getName(void) const;
+	std::string const& getTarget(void) const;
 	bool const& getSigned(void) const;
 	int const& getSignGrade(void) const;
 	int const& getExecuteGrade(void) const;
@@ -30,6 +32,7 @@ public:
 
 private:
 	const std::string m_name;
+	const std::string m_target;
 	bool m_signed;
 	const int m_sign_grade;
 	const int m_execute_grade;
