@@ -3,7 +3,9 @@
 
 #include <string>
 #include <iostream>
+#include "Form.hpp"
 
+class Form;
 class Bureaucrat {
 public:
 	Bureaucrat();
@@ -12,6 +14,8 @@ public:
 	~Bureaucrat();
 	Bureaucrat& operator=(const Bureaucrat& rhs);
 
+
+	void signForm(Form& form);
 	std::string const& getName(void) const;
 	int const& getGrade(void) const;
 	void incrementGrade(void);

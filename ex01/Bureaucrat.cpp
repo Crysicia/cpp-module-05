@@ -27,6 +27,16 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs) {
 	return *this;
 }
 
+void Bureaucrat::signForm(Form& form) {
+	try {
+		form.beSigned(*this);
+	} catch (std::exception& e) {
+		std::cout << m_name << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
+		return ;
+	}
+	std::cout << m_name << " signs " << form.getName() << std::endl;
+}
+
 std::string const& Bureaucrat::getName(void) const {
 	return m_name;
 }
