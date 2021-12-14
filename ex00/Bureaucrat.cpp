@@ -6,10 +6,8 @@ Bureaucrat::Bureaucrat() : m_name("Nameless"), m_grade(150) {
 
 Bureaucrat::Bureaucrat(std::string const& name, unsigned char const& grade) : m_name(name) {
 	std::cout << "Bureaucrat named constructor called" << std::endl;
-	if (grade < 1 or grade > 150) {
-		// throw error
-		return ;
-	}
+	if (grade < 1 ) { throw Bureaucrat::GradeTooHighException(); }
+	if (grade > 150 ) { throw Bureaucrat::GradeTooLowException(); }
 	m_grade = grade;
 }
 
@@ -38,23 +36,29 @@ std::string const& Bureaucrat::getName(void) const {
 	return m_name;
 }
 
-unsigned char const& Bureaucrat::getGrade(void) const {
+int const& Bureaucrat::getGrade(void) const {
 	return m_grade;
 }
 
 void Bureaucrat::incrementGrade(void) {
-	if (m_grade > 1) {
-		m_grade--;
-	}
+	m_grade--;
+	if (m_grade < 1 ) { throw Bureaucrat::GradeTooHighException(); }
 }
 
 void Bureaucrat::decrementGrade(void) {
-	if (m_grade < 150) {
-		m_grade++;
-	}
+	m_grade++;
+	if (m_grade > 150 ) { throw Bureaucrat::GradeTooLowException(); }
 }
 
 std::ostream& operator<< (std::ostream& os, const Bureaucrat& bureaucrat) {
 	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
 	return os;
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return "Grade too low";
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return "Grade too high";
 }
