@@ -4,7 +4,7 @@ Bureaucrat::Bureaucrat() : m_name("Nameless"), m_grade(150) {
 	std::cout << "Bureaucrat default constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string const& name, unsigned char const& grade) : m_name(name) {
+Bureaucrat::Bureaucrat(std::string const& name, int const& grade) : m_name(name) {
 	std::cout << "Bureaucrat named constructor called" << std::endl;
 	if (grade < 1 ) { throw Bureaucrat::GradeTooHighException(); }
 	if (grade > 150 ) { throw Bureaucrat::GradeTooLowException(); }
@@ -41,13 +41,13 @@ int const& Bureaucrat::getGrade(void) const {
 }
 
 void Bureaucrat::incrementGrade(void) {
+	if (m_grade == 1 ) { throw Bureaucrat::GradeTooHighException(); }
 	m_grade--;
-	if (m_grade < 1 ) { throw Bureaucrat::GradeTooHighException(); }
 }
 
 void Bureaucrat::decrementGrade(void) {
+	if (m_grade == 150 ) { throw Bureaucrat::GradeTooLowException(); }
 	m_grade++;
-	if (m_grade > 150 ) { throw Bureaucrat::GradeTooLowException(); }
 }
 
 std::ostream& operator<< (std::ostream& os, const Bureaucrat& bureaucrat) {
