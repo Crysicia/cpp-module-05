@@ -14,7 +14,6 @@ public:
 	~Bureaucrat();
 	Bureaucrat& operator=(const Bureaucrat& rhs);
 
-
 	void signForm(Form& form);
 	std::string const& getName(void) const;
 	int const& getGrade(void) const;

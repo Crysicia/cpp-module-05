@@ -20,6 +20,31 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& rhs) {
 	std::cout << "ShrubberyCreationForm copy operator called" << std::endl;
 	if ( this == &rhs ) { return *this; }
-	this->m_signed = rhs.m_signed;
+	*this = rhs;
 	return *this;
+}
+
+void ShrubberyCreationForm::execute(Bureaucrat const& executor) const {
+	if (!getSigned()) { throw Form::NotSignedException(); }
+	if (executor.getGrade() > getExecuteGrade()) { throw Form::GradeTooLowException(); }
+
+	std::ofstream file((getTarget() + "_shruberry").c_str());
+	if (!file.is_open()) { throw Form::CouldNotOpenFIleeException(); }
+	file << "           .     .  .      +     .      .          ."				<< std::endl
+		 << "     .       .      .     #       .           ."					<< std::endl
+		 << "        .      .         ###            .      .      ."			<< std::endl
+		 << "      .      .  \"#:. .:##\"##:. .:#\"  .      ."					<< std::endl
+		 << "          .      . \"####\"###\"####\"  ."							<< std::endl
+		 << "       .     \"#:.    .:#\"###\"#:.    .:#\"  .        .       ."	<< std::endl
+		 << "  .             \"#########\"#########\"        .        ." 		<< std::endl
+		 << "        .    \"#:.  \"####\"###\"####\"  .:#\"   .       ."		<< std::endl
+		 << "     .     .  \"#######\"\"##\"##\"\"#######\"                  ." << std::endl
+		 << "                .\"##\"#####\"#####\"##\"           .      ."		<< std::endl
+		 << "    .   \"#:. ...  .:##\"###\"###\"##:.  ... .:#\"     ."			<< std::endl
+		 << "      .     \"#######\"##\"#####\"##\"#######\"      .     ."		<< std::endl
+		 << "    .    .     \"#####\"\"#######\"\"#####\"    .      ."			<< std::endl
+		 << "            .     \"      000      \"    .     ."					<< std::endl
+		 << "       .         .   .   000     .        .       ."				<< std::endl
+		 << ".. .. ..................O000O........................ ......"		<< std::endl;
+	file.close();
 }

@@ -69,3 +69,11 @@ const char* Form::GradeTooLowException::what() const throw() {
 const char* Form::GradeTooHighException::what() const throw() {
 	return "Grade too high";
 }
+
+const char* Form::NotSignedException::what() const throw() {
+	return "Form not signed";
+}
+
+const char* Form::CouldNotOpenFIleeException::what() const throw() {
+	return "COuld not open file";
+}

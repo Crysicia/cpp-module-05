@@ -20,6 +20,12 @@ PresidentialPardonForm::~PresidentialPardonForm() {
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& rhs) {
 	std::cout << "PresidentialPardonForm copy operator called" << std::endl;
 	if ( this == &rhs ) { return *this; }
-	this->m_signed = rhs.m_signed;
+	// this->m_signed = rhs.m_signed;
 	return *this;
+}
+
+void PresidentialPardonForm::execute(Bureaucrat const& executor) const {
+	if (!getSigned()) { throw Form::NotSignedException(); }
+	if (executor.getGrade() > getExecuteGrade()) { throw Form::GradeTooLowException(); }
+	std::cout << getTarget() << " has been pardoned by Zafod Beeblebrox" << std::endl;
 }

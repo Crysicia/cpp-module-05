@@ -1,5 +1,6 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main(void) {
 	Bureaucrat *billy;
@@ -25,6 +26,9 @@ int main(void) {
 	try { pyro = new Bureaucrat("Pyro", 0); }
 	catch (std::exception& e) { std::cout << "Error, exception catched: Pyro: " << e.what() << std::endl; }
 
+	ShrubberyCreationForm shub("tree");
+	shub.beSigned(*bob);
+	shub.execute(*bob);
 
 	std::cout << std::endl << "---- Initialize Forms ----" << std::endl;
 	try { basic_form = new Form("basic form", 50, 50); }
