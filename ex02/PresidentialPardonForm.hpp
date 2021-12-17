@@ -6,6 +6,9 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
+#define PRESIDENTIAL_PARDON_SIGN 25
+#define PRESIDENTIAL_PARDON_EXEC 5
+
 class Bureaucrat;
 class PresidentialPardonForm : public Form {
 public:

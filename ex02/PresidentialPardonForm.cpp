@@ -1,10 +1,10 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : Form("PresidentialPardonform", 25, 5, "default target") {
+PresidentialPardonForm::PresidentialPardonForm() : Form("PresidentialPardonform", PRESIDENTIAL_PARDON_SIGN, PRESIDENTIAL_PARDON_EXEC, "default target") {
 	std::cout << "PresidentialPardonForm default constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string const& target) : Form("PresidentialPardonform", 25, 5, target) {
+PresidentialPardonForm::PresidentialPardonForm(std::string const& target) : Form("PresidentialPardonform", PRESIDENTIAL_PARDON_SIGN, PRESIDENTIAL_PARDON_EXEC, target) {
 	std::cout << "PresidentialPardonForm named constructor called" << std::endl;
 }
 

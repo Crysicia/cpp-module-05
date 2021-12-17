@@ -6,6 +6,9 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
+#define ROBOROMY_REQUEST_SIGN 72
+#define ROBOROMY_REQUEST_EXEC 45
+
 class Bureaucrat;
 class RobotomyRequestForm : public Form {
 public:
