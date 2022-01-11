@@ -6,6 +6,7 @@ int main(void) {
 	Bureaucrat *fanta;
 	Bureaucrat *pyro;
 
+
 	std::cout << "---- Initialize Bureaucrats ----" << std::endl;
 	try { billy = new Bureaucrat("Billy", 151); }
 	catch (std::exception& e) { std::cout << "Error, exception catched: Billy: " << e.what() << std::endl; }
@@ -35,6 +36,12 @@ int main(void) {
 	std::cout << *bob << std::endl;
 	std::cout << *fanta << std::endl;
 
+	Bureaucrat bob_copy(*bob);
+	Bureaucrat bob_copy_copy;
+	bob_copy_copy = bob_copy;
+
+	std::cout << bob_copy << std::endl;
+	std::cout << bob_copy_copy << std::endl;
 
 	std::cout << std::endl << "---- Call incrementGrade() on Bureaucrats ----" << std::endl;
 	try { bob->incrementGrade(); }

@@ -43,6 +43,7 @@ int main(void) {
 	Form epic_form_clone("epic form clone", 1, 1);
 
 
+
 	std::cout << std::endl << "---- Call decrementGrade() on Bureaucrats ----" << std::endl;
 	try { bob->decrementGrade(); }
 	catch (std::exception& e) { std::cout << "Error, exception catched: " << bob->getName() << ": " << e.what() << std::endl; }
@@ -58,6 +59,13 @@ int main(void) {
 	std::cout << *bob << std::endl;
 	std::cout << *fanta << std::endl;
 
+	Bureaucrat bob_copy(*bob);
+	Bureaucrat bob_copy_copy;
+	bob_copy_copy = bob_copy;
+
+	std::cout << bob_copy << std::endl;
+	std::cout << bob_copy_copy << std::endl;
+
 
 	std::cout << std::endl << "---- Call incrementGrade() on Bureaucrats ----" << std::endl;
 	try { bob->incrementGrade(); }
@@ -70,6 +78,11 @@ int main(void) {
 	std::cout << std::endl << "---- Call stream overloading on Forms ----" << std::endl;
 	std::cout << *basic_form << std::endl;
 	std::cout << *epic_form << std::endl;
+
+	Form cool_form;
+	cool_form = basic_form_clone;
+	std::cout << basic_form_clone << std::endl;
+	std::cout << cool_form << std::endl;
 
 
 	std::cout << std::endl << "---- Call signForm() on Bureaucrats ----" << std::endl;

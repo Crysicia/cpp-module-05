@@ -1,33 +1,29 @@
 #include "Form.hpp"
 
-Form::Form() : m_name("Untitled form"), m_target("no target"), m_signed(false), m_sign_grade(150), m_execute_grade(150) {
-	std::cout << "Form default constructor called" << std::endl;
-}
+Form::Form() : m_name("Untitled form"), m_target("no target"), m_signed(false), m_sign_grade(150), m_execute_grade(150) { }
 
 Form::Form(std::string const& name, int const& sign_grade, int const& execute_grade) : m_name(name), m_target("no target"), m_signed(false), m_sign_grade(sign_grade), m_execute_grade(execute_grade) {
-	std::cout << "Form named constructor called" << std::endl;
-	if (sign_grade < 1 or execute_grade < 1) { throw Form::GradeTooHighException(); }
+ 	if (sign_grade < 1 or execute_grade < 1) { throw Form::GradeTooHighException(); }
 	if (sign_grade > 150 or execute_grade > 150) { throw Form::GradeTooLowException(); }
 }
 
 Form::Form(std::string const& name, int const& sign_grade, int const& execute_grade, std::string const& target) : m_name(name), m_target(target), m_signed(false), m_sign_grade(sign_grade), m_execute_grade(execute_grade) {
-	std::cout << "Form named constructor called" << std::endl;
-	if (sign_grade < 1 or execute_grade < 1) { throw Form::GradeTooHighException(); }
+ 	if (sign_grade < 1 or execute_grade < 1) { throw Form::GradeTooHighException(); }
 	if (sign_grade > 150 or execute_grade > 150) { throw Form::GradeTooLowException(); }
 }
 
 Form::Form(const Form& copy) : m_name(copy.m_name), m_target(copy.m_target), m_signed(copy.m_signed), m_sign_grade(copy.m_sign_grade), m_execute_grade(copy.m_execute_grade) {
-	std::cout << "Form copy constructor called" << std::endl;
-	*this = copy;
+ 	*this = copy;
 }
 
-Form::~Form() {
-	std::cout << "Form destructor called" << std::endl;
-}
+Form::~Form() { }
 
 Form& Form::operator=(const Form& rhs) {
-	std::cout << "Form copy operator called" << std::endl;
 	if ( this == &rhs ) { return *this; }
+	const_cast<std::string&>(this->m_name) = rhs.m_name;
+	const_cast<std::string&>(this->m_target) = rhs.m_target;
+	const_cast<int&>(this->m_sign_grade) = rhs.m_sign_grade;
+	const_cast<int&>(this->m_execute_grade) = rhs.m_execute_grade;
 	this->m_signed = rhs.m_signed;
 	return *this;
 }
@@ -47,6 +43,10 @@ std::string const& Form::getTarget(void) const {
 
 bool const& Form::getSigned(void) const {
 	return m_signed;
+}
+
+void Form::setSigned(bool value) {
+	this->m_signed = value;
 }
 
 int const& Form::getSignGrade(void) const {

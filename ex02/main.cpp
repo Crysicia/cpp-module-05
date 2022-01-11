@@ -41,7 +41,7 @@ int main(void) {
 	try { unsigned_presidential_pardon_form = new PresidentialPardonForm("Dirk Gently"); }
 	catch (std::exception& e) { std::cout << "Error, exception catched: unsigned_presidential_pardon_form: " << e.what() << std::endl; }
 	
-	// ---- You cannot initialize From because it is now an abstract class
+	// ---- You cannot initialize Form because it is now an abstract class
 	// Form base_form("Impossible", 50, 50);
 
 	std::cout << std::endl << "---- Call decrementGrade() on Bureaucrats ----" << std::endl;
@@ -78,6 +78,10 @@ int main(void) {
 	fanta->signForm(*robotomy_request_form);
 	bob->signForm(*robotomy_request_form);
 	bob->signForm(*presidential_pardon_form);
+
+	PresidentialPardonForm copy;
+	copy = *dynamic_cast<PresidentialPardonForm*>(presidential_pardon_form);
+	std::cout << copy << std::endl;
 
 	std::cout << std::endl << "---- Call stream overloading on Forms ----" << std::endl;
 	std::cout << *shrubbery_creation_form << std::endl;

@@ -19,6 +19,7 @@ public:
 	std::string const& getName(void) const;
 	std::string const& getTarget(void) const;
 	bool const& getSigned(void) const;
+	void setSigned(bool value);
 	int const& getSignGrade(void) const;
 	int const& getExecuteGrade(void) const;
 	virtual void execute(Bureaucrat const& executor) const = 0;
