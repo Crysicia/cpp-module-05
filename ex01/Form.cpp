@@ -2,8 +2,8 @@
 
 Form::Form() : m_name("Untitled form"), m_signed(false), m_sign_grade(150), m_execute_grade(150) { }
 
-Form::Form(std::string const& name, int const& sign_grade, int const& execute_grade) : m_name(name), m_signed(false), m_sign_grade(sign_grade), m_execute_grade(execute_grade) { 	if (sign_grade < 1 or execute_grade < 1) {
-	throw Form::GradeTooHighException(); }
+Form::Form(std::string const& name, int const& sign_grade, int const& execute_grade) : m_name(name), m_signed(false), m_sign_grade(sign_grade), m_execute_grade(execute_grade) {
+	if (sign_grade < 1 or execute_grade < 1) { throw Form::GradeTooHighException(); }
 	if (sign_grade > 150 or execute_grade > 150) { throw Form::GradeTooLowException(); }
 }
 
